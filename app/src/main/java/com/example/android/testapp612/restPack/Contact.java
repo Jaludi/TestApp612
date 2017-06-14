@@ -19,6 +19,7 @@ public class Contact implements Parcelable {
     private String cell;
     private String id;
     private String nat;
+    private String imageURL;
 
 
     protected Contact(Parcel in) {
@@ -33,6 +34,7 @@ public class Contact implements Parcelable {
         cell = in.readString();
         id = in.readString();
         nat = in.readString();
+        imageURL = in.readString();
     }
 
     public static final Creator<Contact> CREATOR = new Creator<Contact>() {
@@ -47,7 +49,16 @@ public class Contact implements Parcelable {
         }
     };
 
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     @Override
+
     public int describeContents() {
         return 0;
     }
@@ -60,7 +71,7 @@ public class Contact implements Parcelable {
         this.location = location;
     }
 
-    public Contact(String location, String name, String gender, String email, String login, String dob, String registered, String phone, String cell, String id, String nat) {
+    public Contact(String location, String name, String gender, String email, String login, String dob, String registered, String phone, String cell, String id, String nat, String URL) {
         this.location = location;
         this.name = name;
         this.gender = gender;
@@ -72,6 +83,8 @@ public class Contact implements Parcelable {
         this.cell = cell;
         this.id = id;
         this.nat = nat;
+        this.imageURL = URL;
+
     }
 
     public String getName() {
@@ -167,5 +180,6 @@ public class Contact implements Parcelable {
         dest.writeString(cell);
         dest.writeString(id);
         dest.writeString(nat);
+        dest.writeString(imageURL);
     }
 }
